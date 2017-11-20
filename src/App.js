@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import _ from 'lodash'; //All function of the lodash
+// import _ from 'lodash'; //All function of the lodash
 import './App.css';
 import TaskForm from './components/TaskForm';
 import Control from './components/Control';
@@ -124,23 +124,23 @@ class App extends Component {
   //   localStorage.setItem('tasks', JSON.stringify(tasks));
   // }
 
-  onUpdateStatus = (id) => {
-    var {tasks} = this.state;
-    // var index = this.findIndex(id);
-    // Using lodash
-    var index = _.findIndex(tasks, (task) => {
-      return task.id === id;
-    });
+  // onUpdateStatus = (id) => {
+  //   var {tasks} = this.state;
+  //   // var index = this.findIndex(id);
+  //   // Using lodash
+  //   var index = _.findIndex(tasks, (task) => {
+  //     return task.id === id;
+  //   });
 
-    if(index !== -1) {
-      tasks[index].status = !tasks[index].status;
-      this.setState({
-        tasks: tasks
-      });
+  //   if(index !== -1) {
+  //     tasks[index].status = !tasks[index].status;
+  //     this.setState({
+  //       tasks: tasks
+  //     });
 
-      localStorage.setItem('tasks', JSON.stringify(tasks));
-    }
-  }
+  //     localStorage.setItem('tasks', JSON.stringify(tasks));
+  //   }
+  // }
 
   findIndex = (id) => {
     var { tasks } = this.state;
@@ -300,7 +300,7 @@ class App extends Component {
 
               <TaskList
                 // tasks={tasks}
-                onUpdateStatus={this.onUpdateStatus}
+                // onUpdateStatus={this.onUpdateStatus}
                 onDelete={this.onDelete}
                 onUpdate={this.onUpdate}
                 onFilter={this.onFilter}

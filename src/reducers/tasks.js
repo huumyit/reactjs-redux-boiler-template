@@ -1,3 +1,4 @@
+import _ from 'lodash'; //All function of the lodash
 import * as types from './../constants/ActionTypes';
 
 // random key ID
@@ -18,7 +19,7 @@ var myReducer  = (state = initialState, action) => {
     switch (action.type) {
         case types.LIST_ALL:
             return state;
-        case types.ADD_TASK:
+        case types.ADD_TASK :
 						// console.log(action);
 						var newTask = {
 							id: generateID(),
@@ -28,7 +29,22 @@ var myReducer  = (state = initialState, action) => {
 						state.push(newTask);
 						localStorage.setItem('tasks', JSON.stringify(state));
 						return [...state]; // Create new item to the array
-				
+				case types.UPDATE_STATUS_TASK :
+						var id = action.id;
+						var index = _.findIndex(state, (task) => {
+							return task.id === id;
+						});
+						// var cloneTack = {...state[index]};
+						// cloneTack.status = !cloneTack.status;
+						// state[index] = cloneTack;
+						state[index] = {
+							...state[index],
+							status: !state[index].status
+						}
+						
+						localStorage.setItem('tasks', JSON.stringify(state));
+						return [...state];
+
         default: return state;
     } 
 }
