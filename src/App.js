@@ -19,16 +19,6 @@ class App extends Component {
       itemEditing: null
     };
   }
-  
-  onFilter = (filterName, filterStatus) => {
-    filterStatus = parseInt(filterStatus, 10);
-    this.setState({
-      filter: {
-        name: filterName.toLowerCase(),
-        status: filterStatus
-      }
-    });
-  }
 
   onSearch = (keyword) => {
     this.setState({
@@ -68,9 +58,7 @@ class App extends Component {
                 sortValue={sortValue}
               />
 
-              <TaskList
-                onFilter={this.onFilter}
-              />
+              <TaskList />
             </div>
 
           </div>
