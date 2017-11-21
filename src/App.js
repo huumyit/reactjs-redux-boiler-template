@@ -154,21 +154,21 @@ class App extends Component {
     return result;
   }
 
-  onDelete = (id) => {
-    var {tasks} = this.state;
-    var index = this.findIndex(id);
+  // onDelete = (id) => {
+  //   var {tasks} = this.state;
+  //   var index = this.findIndex(id);
 
-    if(index !== -1) {
-      // The splice() method adds/removes items to/from an array
-      tasks.splice(index, 1);
-      this.setState({
-        tasks: tasks
-      });
+  //   if(index !== -1) {
+  //     // The splice() method adds/removes items to/from an array
+  //     tasks.splice(index, 1);
+  //     this.setState({
+  //       tasks: tasks
+  //     });
 
-      localStorage.setItem('tasks', JSON.stringify(tasks));
-    }
-    this.onCloseForm();
-  }
+  //     localStorage.setItem('tasks', JSON.stringify(tasks));
+  //   }
+  //   this.onCloseForm();
+  // }
 
   onUpdate = (id) => {
     var {tasks} = this.state;
@@ -301,7 +301,7 @@ class App extends Component {
               <TaskList
                 // tasks={tasks}
                 // onUpdateStatus={this.onUpdateStatus}
-                onDelete={this.onDelete}
+                // onDelete={this.onDelete}
                 onUpdate={this.onUpdate}
                 onFilter={this.onFilter}
               />
