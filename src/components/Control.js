@@ -1,11 +1,24 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import * as actions from './../actions/index';
+
 import Search from './Search';
 import Sort from './Sort';
 
 class Control extends Component {
 
     onToggleForm = () => {
-        this.props.onToggleForm();
+        var itemEditing = this.props;
+        if (itemEditing && itemEditing.id !== '') {
+            this.props.onOpenForm();
+        } else {
+            this.props.onToggleForm();
+        }
+        this.props.onClearTask({
+            id: '',
+            name: '',
+            status: false
+        });
     }
 
   render() {
@@ -42,4 +55,24 @@ class Control extends Component {
   }
 }
 
-export default Control;
+const mapStateToProps = (state) => {
+	return {
+        itemEditing: state.itemEditing
+    };
+}
+
+const mapDispatchToProps = (dispatch, props) => {
+	return {
+        onToggleForm : () => {
+            dispatch(actions.toggleForm());
+        },
+		onClearTask : (task) => {
+			dispatch(actions.editTask(task));
+        },
+        onOpenForm : () => {
+			dispatch(actions.openForm());
+		}
+	}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Control)
