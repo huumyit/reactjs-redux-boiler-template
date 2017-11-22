@@ -25,8 +25,14 @@ class TaskList extends Component {
   }
 
   render() {
-    var { tasks, filterTable } = this.props;
+    var { tasks, filterTable, keyword } = this.props;
+    
+    // Search task
+    tasks = tasks.filter((task) => {
+      return task.name.toLowerCase().indexOf(keyword.toLowerCase()) !== -1;
+    });
 
+    // Input filter name
     if (filterTable.name) {
       tasks = tasks.filter((task) => {
         return task.name.toLowerCase().indexOf(filterTable.name) !== -1;
@@ -41,10 +47,11 @@ class TaskList extends Component {
       }
     });
 
-    var {filterName, filterStatus} = this.state;
+    var { filterName, filterStatus } = this.state;
     var elmTasks = tasks.map((task, index) => {
       return (<TaskItem key={task.id} index={index} task={task}/>);
     });
+
     return (
       <table className="table table-bordered table-hover">
         <thead>
@@ -93,7 +100,8 @@ class TaskList extends Component {
 const mapStateToProps = (state) => {
   return {
     tasks: state.tasks,
-    filterTable: state.filterTable
+    filterTable: state.filterTable,
+    keyword: state.searchTask
   }
 }
 

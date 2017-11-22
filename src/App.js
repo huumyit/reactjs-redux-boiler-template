@@ -52,7 +52,6 @@ class App extends Component {
 
             <div className={ isDisplayForm ? 'col-xs-8 col-sm-8 col-md-8 col-lg-8' : 'col-xs-12 col-sm-12 col-md-12 col-lg-12'} >
               <Control
-                onSearch={this.onSearch}
                 onSort={this.onSort}
                 sortBy={sortBy}
                 sortValue={sortValue}
