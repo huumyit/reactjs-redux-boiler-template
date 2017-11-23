@@ -8,17 +8,6 @@ import { connect } from 'react-redux';
 import * as actions from './actions/index';
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      // keyword: '',
-      sortBy: 'name',
-      sortValue: 1,
-      filterName: '',
-      filterStatus: '-1',
-      itemEditing: null
-    };
-  }
 
   render() {
     var { isDisplayForm } = this.props;
