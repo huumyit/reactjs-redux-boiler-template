@@ -1,21 +1,21 @@
 import * as types from './../constants/ActionTypes';
 
 var initialState = {
-  name: '',
-  status: -1
+  by: 'name',
+  value: 1 // 1: tăng, -1: giảm
 };
 
 var myReducer  = (state = initialState, action) => {
-	switch (action.type) {
-    case types.FILTER_TABLE :
+  switch (action.type) {
+    case types.SORT :
       return {
-        name: action.filter.name,
-        status: parseInt(action.filter.status, 10)
+        by: action.dataSort.by,
+        value: action.dataSort.value
       };
 
     default:
       return state;
-	}
+  }
 }
 
 export default myReducer;

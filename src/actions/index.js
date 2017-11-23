@@ -34,21 +34,21 @@ export const openForm = () => {
 export const updateStatus = (id) => {
 	return {
 		type: types.UPDATE_STATUS_TASK,
-		id 
+		id
 	}
 }
 
 export const deleteTask = (id) => {
 	return {
 		type: types.DELETE_TASK,
-		id 
+		id
 	}
 }
 
 export const editTask = (task) => {
 	return {
 		type: types.EDIT_TASK,
-		task 
+		task
 	}
 }
 
@@ -63,6 +63,13 @@ export const searchTask = (keyword) => {
 	return {
 		type: types.SEARCH,
 		keyword
+	}
+}
+
+export const sortTask = (dataSort) => {
+	return {
+		type: types.SORT,
+		dataSort // sortTask: sortTask -> sortBy, sortValue
 	}
 }
 

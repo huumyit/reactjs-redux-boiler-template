@@ -17,7 +17,7 @@ class TaskList extends Component {
     var name = target.name;
     var value = target.type === 'checkbox' ? target.checked : target.value;
     var filter = {
-      name: name === 'filterName' ? value : this.state.filterName, 
+      name: name === 'filterName' ? value : this.state.filterName,
       status: name === 'filterStatus' ? value : this.state.filterStatus
     };
     this.props.onFilterTable(filter);
@@ -25,8 +25,10 @@ class TaskList extends Component {
   }
 
   render() {
-    var { tasks, filterTable, keyword } = this.props;
-    
+    var { tasks, filterTable, keyword, sort } = this.props;
+
+    console.log(sort);
+
     // Search task
     tasks = tasks.filter((task) => {
       return task.name.toLowerCase().indexOf(keyword.toLowerCase()) !== -1;
@@ -46,6 +48,21 @@ class TaskList extends Component {
         return task.status === (filterTable.status === 1 ? true : false);
       }
     });
+
+    // sort
+    if (sort.by === 'name') {
+      tasks.sort((a,b) => {
+        if (a.name > b.name) return -sort.value;
+        else if (a.name < b.name) return sort.value;
+        else return 0;
+      });
+    }else {
+      tasks.sort((a,b) => {
+        if (a.status > b.status) return -sort.value;
+        else if (a.status < b.status) return sort.value;
+        else return 0;
+      });
+    }
 
     var { filterName, filterStatus } = this.state;
     var elmTasks = tasks.map((task, index) => {
@@ -101,7 +118,8 @@ const mapStateToProps = (state) => {
   return {
     tasks: state.tasks,
     filterTable: state.filterTable,
-    keyword: state.searchTask
+    keyword: state.searchTask,
+    sort: state.sortTask
   }
 }
 

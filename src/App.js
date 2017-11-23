@@ -11,7 +11,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      keyword: '',
+      // keyword: '',
       sortBy: 'name',
       sortValue: 1,
       filterName: '',
@@ -20,27 +20,7 @@ class App extends Component {
     };
   }
 
-  onSearch = (keyword) => {
-    this.setState({
-      keyword: keyword
-    });
-  }
-
-  onSort = (sortBy, sortValue) => {
-
-    this.setState({
-      sortBy: sortBy,
-      sortValue: sortValue
-    });
-  }
-
   render() {
-    // parameter according to ES6
-    var {
-      sortBy,
-      sortValue
-    } = this.state;
-
     var { isDisplayForm } = this.props;
 
     return (
@@ -51,11 +31,7 @@ class App extends Component {
             </div>
 
             <div className={ isDisplayForm ? 'col-xs-8 col-sm-8 col-md-8 col-lg-8' : 'col-xs-12 col-sm-12 col-md-12 col-lg-12'} >
-              <Control
-                onSort={this.onSort}
-                sortBy={sortBy}
-                sortValue={sortValue}
-              />
+              <Control />
 
               <TaskList />
             </div>
@@ -68,7 +44,7 @@ class App extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    isDisplayForm: state.isDisplayForm 
+    isDisplayForm: state.isDisplayForm
   }
 };
 
