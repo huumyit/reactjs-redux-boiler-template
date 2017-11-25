@@ -14,19 +14,19 @@ class App extends Component {
 
     return (
       <div className="container mt-50">
-          <div className="row">
-            <div className={ isDisplayForm ? 'col-xs-4 col-sm-4 col-md-4 col-lg-4' : ''} >
-              <TaskForm />
-            </div>
-
-            <div className={ isDisplayForm ? 'col-xs-8 col-sm-8 col-md-8 col-lg-8' : 'col-xs-12 col-sm-12 col-md-12 col-lg-12'} >
-              <Control />
-
-              <TaskList />
-            </div>
-
+        <div className="row">
+          <div className={ isDisplayForm ? 'col-xs-12 col-sm-4 col-md-4 col-lg-4' : ''} >
+            <TaskForm />
           </div>
+
+          <div className={ isDisplayForm ? 'col-xs-12 col-sm-8 col-md-8 col-lg-8' : 'col-xs-12 col-sm-12 col-md-12 col-lg-12'} >
+            <Control />
+
+            <TaskList />
+          </div>
+
         </div>
+      </div>
     );
   }
 }

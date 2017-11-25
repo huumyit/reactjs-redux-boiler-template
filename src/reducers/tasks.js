@@ -35,7 +35,7 @@ var myReducer  = (state = initialState, action) => {
 			var task = {
 				id: action.task.id,
 				name: action.task.name,
-				status: action.task.status === true ? true : false
+				status: (action.task.status === 'true' || action.task.status === true) ? true : false
 			}
 			if (!task.id) {
 				task.id = generateID();
@@ -45,7 +45,7 @@ var myReducer  = (state = initialState, action) => {
 				// index = _.findIndex(state, (task) => {
 				// 	return task.id === action.task.id;
 				// });
-				
+
 				// Using findIndex function
 				index = findIndex(state, task.id);
 				state[index] = task;
@@ -67,14 +67,14 @@ var myReducer  = (state = initialState, action) => {
 			id = action.id;
 			index = _.findIndex(state, (task) => {
 				return task.id === id;
-			}); 
+			});
 			state.splice(index, 1);
 			localStorage.setItem('tasks', JSON.stringify(state));
 			return [...state];
 
 
 		default: return state;
-	} 
+	}
 }
 
 export default myReducer;

@@ -36,11 +36,11 @@ class Control extends Component {
           <div className="panel-body">
               <div className="row">
 
-                  <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                  <div className="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                       <Search />
                   </div>
 
-                  <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                  <div className="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                       <Sort />
                   </div>
               </div>
