@@ -1,10 +1,27 @@
 import React, {Component} from 'react';
 import './App.css';
-import {BrowserRouter as Router, Route, NavLink} from 'react-router-dom';
+import {BrowserRouter as Router, Route, NavLink, Link} from 'react-router-dom';
 
 import Home from './components/Home';
 import About from './components/About';
 import Contact from './components/Contact';
+
+const MenuLink = ({label, to, activeOnlyWhenExaxct}) => {
+  return (
+    <Route path={to} exact={activeOnlyWhenExaxct} children={({match}) => {
+      var active = match ? 'active abc' : '';
+      return (
+        <li className={active} >
+          <NavLink
+            to={to}
+            className="my-link">
+              {label}
+          </NavLink>
+        </li>
+      )
+    }} />
+  )
+}
 
 class App extends Component {
   render() {
@@ -14,25 +31,9 @@ class App extends Component {
           {/* Menu */}
           <nav className="navbar navbar-inverse" role="navigation">
             <ul className="nav navbar-nav">
-              <li>
-                <NavLink
-                  activeClassName="active-st"
-                  exact
-                  to="/"
-                  className="my-link">Home</NavLink>
-              </li>
-              <li>
-                <NavLink
-                  activeClassName="active-st"
-                  to="/about"
-                  className="my-link">About</NavLink>
-              </li>
-              <li>
-                <NavLink
-                  activeClassName="active-st"
-                  to="/contact"
-                  className="my-link">Contact</NavLink>
-              </li>
+              <MenuLink label="Home" to="/" activeOnlyWhenExaxct={true} />
+              <MenuLink label="About" to="/about" activeOnlyWhenExaxct={false} />
+              <MenuLink label="Contact" to="/contact" activeOnlyWhenExaxct={false} />
             </ul>
           </nav>
           {/* Content */}
