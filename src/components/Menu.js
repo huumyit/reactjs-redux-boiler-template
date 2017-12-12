@@ -18,6 +18,10 @@ const menus = [
     name: 'Contact',
     to: '/contact',
     exact: false
+  }, {
+    name: 'Login',
+    to: '/login',
+    exact: false
   }
 ]
 
